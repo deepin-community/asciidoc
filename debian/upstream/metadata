@@ -1,7 +1,7 @@
 ---
+Bug-Database: https://github.com/asciidoc-py/asciidoc-py/issues
 Bug-Submit: https://github.com/asciidoc-py/asciidoc-py/issues
 Changelog: https://github.com/asciidoc-py/asciidoc-py/blob/main/CHANGELOG.txt
 Documentation: https://asciidoc.org
-Name: asciidoc
-Repository: git@github.com:asciidoc-py/asciidoc-py.git
+Repository: https://github.com/asciidoc-py/asciidoc-py.git
 Repository-Browse: https://github.com/asciidoc-py/asciidoc-py

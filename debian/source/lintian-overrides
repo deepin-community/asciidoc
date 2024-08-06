@@ -1,0 +1,11 @@
+# These test files have been deliberatly designed to have a very long line length
+source-is-missing [tests/data/include-lines-html5.html]
+source-is-missing [tests/data/newline-mac-html5.html]
+source-is-missing [tests/data/source-highlight-filter-html4.html]
+source-is-missing [tests/data/source-highlight-filter-html5.html]
+source-is-missing [tests/data/source-highlight-filter-xhtml11.html]
+very-long-line-length-in-source-file 16742 > 512 [tests/data/newline-mac-html5.html:1]
+very-long-line-length-in-source-file 694 > 512 [tests/data/source-highlight-filter-html4.html:224]
+very-long-line-length-in-source-file 782 > 512 [tests/data/include-lines-html5.html:849]
+very-long-line-length-in-source-file 937 > 512 [tests/data/source-highlight-filter-html5.html:993]
+very-long-line-length-in-source-file 937 > 512 [tests/data/source-highlight-filter-xhtml11.html:995]

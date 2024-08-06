@@ -1,4 +1,4 @@
-From 3164ecd47260fae2b6e5ee5e68c6b3dcf4a56857 Mon Sep 17 00:00:00 2001
+From 18de07c02ae05eeac658fd1efce294015866b57b Mon Sep 17 00:00:00 2001
 From: Leon Marz <main@lmarz.org>
 Date: Thu, 21 Oct 2021 12:58:15 +0200
 Subject: [PATCH] Recognize /etc/asciidoc
@@ -7,14 +7,14 @@ Add /etc/asciidoc and /usr/share/asciidoc as an option,
 where to find the resources
 ---
  asciidoc/a2x.py      | 4 ++++
- asciidoc/asciidoc.py | 3 +++
- 2 files changed, 7 insertions(+)
+ asciidoc/asciidoc.py | 5 +++++
+ 2 files changed, 9 insertions(+)
 
 diff --git a/asciidoc/a2x.py b/asciidoc/a2x.py
-index 4e9d363..44012ca 100644
+index 9343288..27ff7ff 100644
 --- a/asciidoc/a2x.py
 +++ b/asciidoc/a2x.py
-@@ -50,6 +50,8 @@ from . import asciidoc
+@@ -72,6 +72,8 @@ from . import asciidoc
  from .collections import DefaultAttrDict as AttrDict
  
  CONF_DIR = os.path.join(os.path.dirname(__file__), 'resources')
@@ -23,7 +23,7 @@ index 4e9d363..44012ca 100644
  METADATA = {}
  with open(os.path.join(os.path.dirname(__file__), '__metadata__.py')) as f:
      exec(f.read(), METADATA)
-@@ -420,6 +422,8 @@ class A2X(AttrDict):
+@@ -432,6 +434,8 @@ class A2X(AttrDict):
          '''
          CONF_FILE = 'a2x.conf'
          a2xdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources')
@@ -33,11 +33,11 @@ index 4e9d363..44012ca 100644
          # From a2x.py directory.
          conf_files.append(os.path.join(a2xdir, CONF_FILE))
 diff --git a/asciidoc/asciidoc.py b/asciidoc/asciidoc.py
-index 4c323f1..ba383d9 100644
+index 0ccf24d..ccebc09 100644
 --- a/asciidoc/asciidoc.py
 +++ b/asciidoc/asciidoc.py
-@@ -40,6 +40,8 @@ from .exceptions import EAsciiDoc
- from . import utils
+@@ -47,6 +47,8 @@ from .message import Message
+ from .plugin import Plugin
  
  CONF_DIR = os.path.join(os.path.dirname(__file__), 'resources')
 +if not os.path.isdir(CONF_DIR):
@@ -45,7 +45,7 @@ index 4c323f1..ba383d9 100644
  METADATA = {}
  with open(os.path.join(os.path.dirname(__file__), '__metadata__.py')) as f:
      exec(f.read(), METADATA)
-@@ -4697,6 +4699,7 @@ class Config:
+@@ -4493,6 +4495,7 @@ class Config:
          result = []
          # Load from global configuration directory.
          result.append(CONF_DIR)
@@ -53,6 +53,15 @@ index 4c323f1..ba383d9 100644
          # Load configuration files from ~/.asciidoc if it exists.
          if USER_DIR is not None:
              result.append(USER_DIR)
+@@ -5655,6 +5658,8 @@ def asciidoc(backend, doctype, confiles, infile, outfile, options):
+         # Set the default embedded icons directory.
+         if 'data-uri' in document.attributes and not os.path.isdir(document.attributes['iconsdir']):
+             document.attributes['iconsdir'] = os.path.join(document.attributes['asciidoc-confdir'], 'icons')
++            if not os.path.isdir(document.attributes['iconsdir']):
++                document.attributes['iconsdir'] = '/usr/share/asciidoc/icons'
+         # Set compat mode
+         # TODO: Enable this in 10.3 (see https://github.com/asciidoc-py/asciidoc-py/issues/254)
+         # if 'future-compat' in document.attributes:
 -- 
-2.33.0
+2.39.2
 
