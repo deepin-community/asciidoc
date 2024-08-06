@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Leon Marz <main@lmarz.org>
 Build-Depends: debhelper-compat (= 13), dh-python, python3, python3-setuptools
 Build-Depends-Indep: xmlto
-Standards-Version: 4.6.0
+Standards-Version: 4.6.2
 Vcs-Browser: https://salsa.debian.org/debian/asciidoc
 Vcs-Git: https://salsa.debian.org/debian/asciidoc.git
 Homepage: https://asciidoc.org
@@ -33,8 +33,6 @@ Description: Highly configurable text format for writing documentation
 Package: asciidoc-common
 Architecture: all
 Depends: python3, ${misc:Depends}
-Replaces: asciidoc (<< 8.6.9-4)
-Breaks: asciidoc (<< 8.6.9-4)
 Multi-Arch: foreign
 Description: Basic data and configuration files for asciidoc
  AsciiDoc is a text document format for writing articles, books, manuals and
@@ -60,8 +58,6 @@ Depends: asciidoc-common (= ${binary:Version}),
          ${python3:Depends}
 Recommends: xmlto
 Suggests: asciidoc-doc, docbook-utils, source-highlight
-Replaces: asciidoc (<< 8.6.9-4)
-Breaks: asciidoc (<< 8.6.9-4)
 Multi-Arch: foreign
 Description: Minimal version of asciidoc not suitable for pdf
  AsciiDoc is a text document format for writing articles, books, manuals and
@@ -121,7 +117,7 @@ Description: Asciidoc package including fop dependencies
 
 Package: asciidoc-tests
 Architecture: all
-Depends: asciidoc-base, python3, ${misc:Depends}, ${python3:Depends}
+Depends: asciidoc-base, python3:any, ${misc:Depends}, ${python3:Depends}
 Suggests: asciidoc-doc
 Multi-Arch: foreign
 Description: Test framework for asciidoc

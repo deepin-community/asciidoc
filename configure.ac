@@ -1,6 +1,6 @@
-AC_INIT(asciidoc, 10.0.2)
+AC_INIT(asciidoc, 10.2.1)
 
-AC_SUBST([PACKAGE_DATE], ['28 October 2021'])
+AC_SUBST([PACKAGE_DATE], ['16 July 2024'])
 
 AC_CONFIG_FILES(Makefile)
 

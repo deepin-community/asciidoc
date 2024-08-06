@@ -74,7 +74,7 @@ setup(
     author=AUTHOR,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests',)),
+    packages=find_packages(include=('asciidoc*',)),
     entry_points={
         'console_scripts': [
             'asciidoc=asciidoc.asciidoc:cli',
@@ -82,12 +82,11 @@ setup(
         ],
     },
     include_package_data=True,
-    license='GPLv2',
+    license='GPLv2+',
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
